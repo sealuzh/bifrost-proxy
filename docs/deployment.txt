@@ -1,0 +1,5 @@
+# Build Docker Image
+docker build -t bifrost/proxy .
+
+# Run Image with Chosen Port
+docker run --net=overlay-net -p 8000:80 -d --name web_proxy bifrost/proxy
