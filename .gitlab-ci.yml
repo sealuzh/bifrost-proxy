@@ -6,21 +6,21 @@ stages:
 build_image:
   stage: build
   script:
-    - docker build -t bifrost-proxy .
+    - docker build -t bifrostuzh-proxy .
   only:
     - master
 
 test:
   stage: test
   script:
-    - docker run bifrost-proxy npm test
+    - docker run bifrostuzh-proxy npm test
   only:
     - master
 
 publish:
   stage: deploy
   script:
-    - docker tag -f bifrost-proxy localhost:5000/bifrost/proxy
-    - docker push localhost:5000/bifrost/proxy
+    - docker tag -f bifrostuzh-proxy bifrostuzh/proxy
+    - docker push bifrostuzh/proxy
   only:
     - master
