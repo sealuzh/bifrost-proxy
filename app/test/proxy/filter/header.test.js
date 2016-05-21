@@ -77,6 +77,24 @@ describe('Filter: Header', function () {
 
     });
 
+    it('should not re-route requests where no traffic is routed', async function () {
+
+        var headerFilter2 = {
+            traffic: 0,
+            field: 'X-HEADER-TEST',
+            value: 'set',
+            targetHost: serviceConfigB.hostname,
+            targetPort: serviceConfigB.port
+        };
+
+        filter.clear();
+        filter.addFilter(headerFilter2);
+
+        var response = await request({uri: 'http://localhost:80/', simple: false, resolveWithFullResponse: true, json: true, headers: {'X-HEADER-TEST': 'set'}});
+        response.body.msg.should.be.eql(serviceAnswerA.msg);
+
+    });
+
     after(function (done) {
         filter.removeFilter(headerFilter);
         nock.cleanAll();

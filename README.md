@@ -1,4 +1,4 @@
-# BiFrost-Proxy
+# Bifrost-Proxy
 
 ### Requirements
 * [NodeJS](https://nodejs.org/en/) > 4.2.*
@@ -11,3 +11,10 @@ After cloning the project, make sure you have installed gulp in your global npm 
 2. `npm start [HOSTNAME] [PORT]` to run the proxy, telling him which Port/Hostname he should proxy.
 
 The proxy will listen on `localhost:[PORT]`, the REST-API on `localhost:9090/api/v1`.
+
+### Run with Docker
+You can always use our official Docker-Image to run the Proxy.
+
+```
+docker run -p 8000:80 -d bifrostuzh/proxy
+```
